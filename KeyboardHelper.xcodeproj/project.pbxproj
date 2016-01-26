@@ -10,6 +10,8 @@
 		275BCA7B1C57C9F800FF3647 /* KeyboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BCA7A1C57C9F800FF3647 /* KeyboardHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275BCA821C57C9F800FF3647 /* KeyboardHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275BCA771C57C9F800FF3647 /* KeyboardHelper.framework */; };
 		275BCA871C57C9F800FF3647 /* KeyboardHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BCA861C57C9F800FF3647 /* KeyboardHelperTests.swift */; };
+		275BCA931C57CA0000FF3647 /* NOKeyboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */; };
+		275BCA941C57CA0000FF3647 /* NOKeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		275BCA811C57C9F800FF3647 /* KeyboardHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		275BCA861C57C9F800FF3647 /* KeyboardHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelperTests.swift; sourceTree = "<group>"; };
 		275BCA881C57C9F800FF3647 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOKeyboardHelper.h; sourceTree = "<group>"; };
+		275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOKeyboardHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,8 @@
 		275BCA791C57C9F800FF3647 /* KeyboardHelper */ = {
 			isa = PBXGroup;
 			children = (
+				275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */,
+				275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */,
 				275BCA7A1C57C9F800FF3647 /* KeyboardHelper.h */,
 				275BCA7C1C57C9F800FF3647 /* Info.plist */,
 			);
@@ -93,6 +99,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275BCA931C57CA0000FF3647 /* NOKeyboardHelper.h in Headers */,
 				275BCA7B1C57C9F800FF3647 /* KeyboardHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				275BCA941C57CA0000FF3647 /* NOKeyboardHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
