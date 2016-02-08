@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		275BCA7B1C57C9F800FF3647 /* KeyboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BCA7A1C57C9F800FF3647 /* KeyboardHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		275BCA821C57C9F800FF3647 /* KeyboardHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275BCA771C57C9F800FF3647 /* KeyboardHelper.framework */; };
-		275BCA871C57C9F800FF3647 /* KeyboardHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 275BCA861C57C9F800FF3647 /* KeyboardHelperTests.swift */; };
-		275BCA931C57CA0000FF3647 /* NOKeyboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */; };
-		275BCA941C57CA0000FF3647 /* NOKeyboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */; };
+		82B793861C6495D000AB8A48 /* KeyboardAppearanceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B793811C6495D000AB8A48 /* KeyboardAppearanceInfo.swift */; };
+		82B793871C6495D000AB8A48 /* KeyboardHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B793821C6495D000AB8A48 /* KeyboardHelper.swift */; };
+		82B793891C6495D000AB8A48 /* KeyboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 82B793851C6495D000AB8A48 /* KeyboardHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		82B793941C64996E00AB8A48 /* KeyboardAppearanceInfoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B793911C64996E00AB8A48 /* KeyboardAppearanceInfoTests.swift */; };
+		82B793951C64996E00AB8A48 /* KeyboardHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B793921C64996E00AB8A48 /* KeyboardHelperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,13 +27,14 @@
 
 /* Begin PBXFileReference section */
 		275BCA771C57C9F800FF3647 /* KeyboardHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeyboardHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		275BCA7A1C57C9F800FF3647 /* KeyboardHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyboardHelper.h; sourceTree = "<group>"; };
-		275BCA7C1C57C9F800FF3647 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		275BCA811C57C9F800FF3647 /* KeyboardHelperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardHelperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		275BCA861C57C9F800FF3647 /* KeyboardHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHelperTests.swift; sourceTree = "<group>"; };
-		275BCA881C57C9F800FF3647 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NOKeyboardHelper.h; sourceTree = "<group>"; };
-		275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NOKeyboardHelper.m; sourceTree = "<group>"; };
+		82B793811C6495D000AB8A48 /* KeyboardAppearanceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceInfo.swift; sourceTree = "<group>"; };
+		82B793821C6495D000AB8A48 /* KeyboardHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHelper.swift; sourceTree = "<group>"; };
+		82B793841C6495D000AB8A48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82B793851C6495D000AB8A48 /* KeyboardHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyboardHelper.h; sourceTree = "<group>"; };
+		82B7938F1C64996E00AB8A48 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82B793911C64996E00AB8A48 /* KeyboardAppearanceInfoTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceInfoTests.swift; sourceTree = "<group>"; };
+		82B793921C64996E00AB8A48 /* KeyboardHelperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHelperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +77,8 @@
 		275BCA791C57C9F800FF3647 /* KeyboardHelper */ = {
 			isa = PBXGroup;
 			children = (
-				275BCA911C57CA0000FF3647 /* NOKeyboardHelper.h */,
-				275BCA921C57CA0000FF3647 /* NOKeyboardHelper.m */,
-				275BCA7A1C57C9F800FF3647 /* KeyboardHelper.h */,
-				275BCA7C1C57C9F800FF3647 /* Info.plist */,
+				82B793801C6495D000AB8A48 /* Classes */,
+				82B793831C6495D000AB8A48 /* Supporting Files */,
 			);
 			path = KeyboardHelper;
 			sourceTree = "<group>";
@@ -86,10 +86,45 @@
 		275BCA851C57C9F800FF3647 /* KeyboardHelperTests */ = {
 			isa = PBXGroup;
 			children = (
-				275BCA861C57C9F800FF3647 /* KeyboardHelperTests.swift */,
-				275BCA881C57C9F800FF3647 /* Info.plist */,
+				82B793901C64996E00AB8A48 /* Tests */,
+				82B7938E1C64996E00AB8A48 /* Supporting Files */,
 			);
 			path = KeyboardHelperTests;
+			sourceTree = "<group>";
+		};
+		82B793801C6495D000AB8A48 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				82B793811C6495D000AB8A48 /* KeyboardAppearanceInfo.swift */,
+				82B793821C6495D000AB8A48 /* KeyboardHelper.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		82B793831C6495D000AB8A48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				82B793841C6495D000AB8A48 /* Info.plist */,
+				82B793851C6495D000AB8A48 /* KeyboardHelper.h */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		82B7938E1C64996E00AB8A48 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				82B7938F1C64996E00AB8A48 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		82B793901C64996E00AB8A48 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				82B793911C64996E00AB8A48 /* KeyboardAppearanceInfoTests.swift */,
+				82B793921C64996E00AB8A48 /* KeyboardHelperTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,8 +134,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275BCA931C57CA0000FF3647 /* NOKeyboardHelper.h in Headers */,
-				275BCA7B1C57C9F800FF3647 /* KeyboardHelper.h in Headers */,
+				82B793891C6495D000AB8A48 /* KeyboardHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275BCA941C57CA0000FF3647 /* NOKeyboardHelper.m in Sources */,
+				82B793871C6495D000AB8A48 /* KeyboardHelper.swift in Sources */,
+				82B793861C6495D000AB8A48 /* KeyboardAppearanceInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +244,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				275BCA871C57C9F800FF3647 /* KeyboardHelperTests.swift in Sources */,
+				82B793951C64996E00AB8A48 /* KeyboardHelperTests.swift in Sources */,
+				82B793941C64996E00AB8A48 /* KeyboardAppearanceInfoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +277,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -261,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -289,7 +324,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -303,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -320,12 +354,15 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyboardHelper/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/KeyboardHelper/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.KeyboardHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -336,19 +373,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = KeyboardHelper/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/KeyboardHelper/Supporting Files/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.KeyboardHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";
 			};
 			name = Release;
 		};
 		275BCA8F1C57C9F800FF3647 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = KeyboardHelperTests/Info.plist;
+				INFOPLIST_FILE = "KeyboardHelperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.KeyboardHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -358,7 +397,7 @@
 		275BCA901C57C9F800FF3647 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				INFOPLIST_FILE = KeyboardHelperTests/Info.plist;
+				INFOPLIST_FILE = "KeyboardHelperTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.KeyboardHelperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -384,6 +423,7 @@
 				275BCA8D1C57C9F800FF3647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		275BCA8E1C57C9F800FF3647 /* Build configuration list for PBXNativeTarget "KeyboardHelperTests" */ = {
 			isa = XCConfigurationList;
@@ -392,6 +432,7 @@
 				275BCA901C57C9F800FF3647 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
