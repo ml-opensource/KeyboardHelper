@@ -7,7 +7,7 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 [![Codecov](https://img.shields.io/codecov/c/github/nodes-ios/KeyboardHelper.svg)](https://codecov.io/github/nodes-ios/KeyboardHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Plaform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
-[![GitHub license](https://img.shields.io/github/license/nodes-ios/KeyboardHelper.svg)](https://github.com/nodes-ios/KeyboardHelper/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nodes-ios/nstack-translations-generator/blob/master/LICENSE)
 
 ## 📦 Installation
 
