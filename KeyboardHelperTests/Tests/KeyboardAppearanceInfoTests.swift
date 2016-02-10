@@ -15,16 +15,13 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
-        var animationCurve = UIViewAnimationCurve.EaseInOut
-        NSNumber(integer: 7).getValue(&animationCurve)
 
         // Create test info
         var testUserInfo: [String: AnyObject] = [
             UIKeyboardFrameBeginUserInfoKey: NSValue(CGRect: CGRect(x: 100, y: 100, width: 100, height: 100)),
             UIKeyboardFrameEndUserInfoKey: NSValue(CGRect: CGRect(x: 200, y: 200, width: 200, height: 200)),
-            UIKeyboardAnimationDurationUserInfoKey: Double(3),
-            UIKeyboardAnimationCurveUserInfoKey: animationCurve.rawValue,
+            UIKeyboardAnimationDurationUserInfoKey: 3.0,
+            UIKeyboardAnimationCurveUserInfoKey: UIViewAnimationCurve.EaseOut.rawValue,
         ]
         
         if #available(iOS 9.0, *) {
@@ -51,7 +48,7 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     @available(iOS 9.0, *)
     func testBelongsToCurrentApp() {
         XCTAssertEqual(apperanceInfo.belongsToCurrentApp, false,
-            "Parsing endFrame from keyboard appearance info failed.")
+            "Parsing belongsToCurrentApp from keyboard appearance info failed.")
     }
     
     func testAnimationDuration() {
@@ -60,12 +57,22 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     }
     
     func testAnimationCurve() {
-        XCTAssertEqual(apperanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 7),
+        XCTAssertEqual(apperanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 2),
             "Parsing animationCurve from keyboard appearance info failed.")
     }
     
-//    func testAnimateAlong() {
-//        XCTAssertEqual(apperanceInfo., <#T##expression2: T?##T?#>, <#T##message: String##String#>)
-//    }
+    func testAnimateAlong() {
+        let expectation = expectationWithDescription("Animate along should take 3 seconds")
+        
+        apperanceInfo.animateAlong({ () -> Void in
+            // Do animations
+            }) { (finished) -> Void in
+                if finished {
+                    expectation.fulfill()
+                }
+        }
+        
+        waitForExpectationsWithTimeout(3.005, handler: nil)
+    }
     
 }
