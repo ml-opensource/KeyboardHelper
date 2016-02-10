@@ -17,7 +17,9 @@ github "nodes-ios/KeyboardHelper"
 ~~~
 
 ### Cocoa Pods
-> **TODO:** Add support  
+~~~
+pod 'KeyboardHelper', '~> 0.9'
+~~~ 
 
 ### Swit Package Manager
 To use KeyboardHelper as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following to your `Package.swift` file.  
