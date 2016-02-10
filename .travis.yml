@@ -5,7 +5,7 @@ branches:
   only:
     - master
 script:
-  - xcodebuild -project KeyboardHelper.xcodeproj -scheme KeyboardHelper -sdk iphonesimulator build test | xcpretty && exit ${PIPESTATUS[0]}
+  - xcodebuild -project KeyboardHelper.xcodeproj -scheme KeyboardHelper -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6S,OS=9.2' build test | xcpretty && exit ${PIPESTATUS[0]}
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
