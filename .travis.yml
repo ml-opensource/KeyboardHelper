@@ -5,7 +5,7 @@ branches:
   only:
     - master
 script:
-  - xctool -project KeyboardHelper.xcodeproj -scheme KeyboardHelper build test -sdk iphonesimulator GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES GCC_GENERATE_TEST_COVERAGE_FILES=YES
+  - xcodebuild -project KeyboardHelper.xcodeproj -scheme KeyboardHelper -sdk iphonesimulator build test | xcpretty && exit ${PIPESTATUS[0]}
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
