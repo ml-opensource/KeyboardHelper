@@ -12,14 +12,26 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 ## 📦 Installation
 
 ### Carthage
-1. Insert `github "nodes-ios/KeyboardHelper"` into your Cartfile.
-2. Run `carthage update`.
+~~~
+github "nodes-ios/KeyboardHelper"
+~~~
 
 ### Cocoa Pods
 > **TODO:** Add support  
 
 ### Swit Package Manager
-> **TODO:** Add support
+To use KeyboardHelper as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following to your `Package.swift` file.  
+
+~~~swift
+import PackageDescription
+
+let package = Package(
+    name: "YourPackage",
+    dependencies: [
+        .Package(url: "https://github.com/nodes-ios/KeyboardHelper.git", majorVersion: 0)
+    ]
+)
+~~~
 
 ## 🔧 Setup
 > **TODO:** Add instructions
