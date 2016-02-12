@@ -18,7 +18,7 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 github "nodes-ios/KeyboardHelper"
 ~~~
 
-### Cocoa Pods
+### CocoaPods
 ~~~
 pod 'KeyboardHelper', '~> 0.9.1'
 ~~~ 
