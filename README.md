@@ -5,6 +5,7 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 
 [![Travis](https://img.shields.io/travis/nodes-ios/KeyboardHelper.svg)](https://travis-ci.org/nodes-ios/KeyboardHelper)
 [![Codecov](https://img.shields.io/codecov/c/github/nodes-ios/KeyboardHelper.svg)](https://codecov.io/github/nodes-ios/KeyboardHelper)
+[![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/KeyboardHelper.svg)](http://cocoadocs.org/docsets/KeyboardHelper/)
 [![CocoaPods](https://img.shields.io/cocoapods/v/KeyboardHelper.svg)](https://cocoapods.org/pods/KeyboardHelper)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)
