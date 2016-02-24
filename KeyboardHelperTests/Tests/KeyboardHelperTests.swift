@@ -57,8 +57,28 @@ class KeyboardHelperTests: XCTestCase {
         
         let expectation = expectationWithDescription("KeyboardHelper calls the delegate as the result of receiving the show notification")
         spyDelegate.expectation = expectation
-
-        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillShowNotification, object: kh)
+        
+//        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillShowNotification, object: kh)
+        let notification : NSNotification
+        if #available(iOS 9.0, *) {
+            notification = NSNotification(name: UIKeyboardWillShowNotification, object: kh, userInfo:[
+                UIKeyboardAnimationCurveUserInfoKey : NSNumber(int: 7),
+                UIKeyboardAnimationDurationUserInfoKey : NSNumber(double: 0.25),
+                UIKeyboardFrameBeginUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 409, width: 375, height: 258)),
+                UIKeyboardIsLocalUserInfoKey : NSNumber(bool: true)
+                ])
+        } else {
+            notification = NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo:[
+                UIKeyboardAnimationCurveUserInfoKey : NSNumber(int: 7),
+                UIKeyboardAnimationDurationUserInfoKey : NSNumber(double: 0.25),
+                UIKeyboardFrameBeginUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 409, width: 375, height: 258))
+                ])
+        }
+        
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        
         
         
         waitForExpectationsWithTimeout(1) { error in
@@ -70,8 +90,13 @@ class KeyboardHelperTests: XCTestCase {
                 XCTFail("Expected delegate to be called")
                 return
             }
-            
             XCTAssertNotNil(result)
+            XCTAssertEqual(result.animationCurve, UIViewAnimationCurve(rawValue: 7))
+            XCTAssertEqual(result.animationDuration, 0.25)
+            XCTAssertEqual(result.beginFrame, CGRect(x: 0, y: 667, width: 375, height: 0))
+            XCTAssertEqual(result.endFrame, CGRect(x: 0, y: 409, width: 375, height: 258))
+            XCTAssertEqual(result.belongsToCurrentApp, true)
+
         }
     }
     
