@@ -12,6 +12,7 @@ import KeyboardHelper
 class KeyboardAppearanceInfoTests: XCTestCase {
     
     var apperanceInfo: KeyboardAppearanceInfo!
+    var defaultsAppearanceInfo : KeyboardAppearanceInfo!
     
     override func setUp() {
         super.setUp()
@@ -24,8 +25,16 @@ class KeyboardAppearanceInfoTests: XCTestCase {
             UIKeyboardAnimationCurveUserInfoKey: UIViewAnimationCurve.EaseOut.rawValue,
         ]
         
+        var defaultParsingUserInfo: [String: AnyObject] = [
+            UIKeyboardFrameBeginUserInfoKey: "bla",
+            UIKeyboardFrameEndUserInfoKey: "bla",
+            UIKeyboardAnimationDurationUserInfoKey: NSValue(CGRect: CGRect(x: 100, y: 100, width: 100, height: 100)),
+            UIKeyboardAnimationCurveUserInfoKey: "bla",
+        ]
+        
         if #available(iOS 9.0, *) {
             testUserInfo[UIKeyboardIsLocalUserInfoKey] = false
+            defaultParsingUserInfo[UIKeyboardIsLocalUserInfoKey] = "this shouldn't work"
         } else {
             print("UIKeyboardIsLocalUserInfoKey is not available before iOS9.")
         }
@@ -33,32 +42,38 @@ class KeyboardAppearanceInfoTests: XCTestCase {
         // Fake the notification
         let note = NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo: testUserInfo)
         apperanceInfo = KeyboardAppearanceInfo(notification: note)
+        defaultsAppearanceInfo = KeyboardAppearanceInfo(notification: NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo: defaultParsingUserInfo))
     }
     
     func testBeginFrame() {
         XCTAssertEqual(apperanceInfo.beginFrame, CGRect(x: 100, y: 100, width: 100, height: 100),
             "Parsing beginFrame from keyboard appearance info failed.")
+        XCTAssertEqual(defaultsAppearanceInfo.beginFrame, CGRectZero)
     }
     
     func testEndFrame() {
         XCTAssertEqual(apperanceInfo.endFrame, CGRect(x: 200, y: 200, width: 200, height: 200),
             "Parsing endFrame from keyboard appearance info failed.")
+        XCTAssertEqual(defaultsAppearanceInfo.endFrame, CGRectZero)
     }
     
     @available(iOS 9.0, *)
     func testBelongsToCurrentApp() {
         XCTAssertEqual(apperanceInfo.belongsToCurrentApp, false,
             "Parsing belongsToCurrentApp from keyboard appearance info failed.")
+        XCTAssertEqual(defaultsAppearanceInfo.belongsToCurrentApp, true)
     }
     
     func testAnimationDuration() {
         XCTAssertEqual(apperanceInfo.animationDuration, Double(3),
             "Parsing animationDuration from keyboard appearance info failed.")
+        XCTAssertEqual(defaultsAppearanceInfo.animationDuration, 0.25)
     }
     
     func testAnimationCurve() {
         XCTAssertEqual(apperanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 2),
             "Parsing animationCurve from keyboard appearance info failed.")
+        XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIViewAnimationCurve.EaseInOut)
     }
     
     func testAnimateAlong() {
