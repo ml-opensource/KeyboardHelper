@@ -21,7 +21,7 @@ github "nodes-ios/KeyboardHelper"
 
 ### CocoaPods
 ~~~
-pod 'KeyboardHelper', '~> 0.9.1'
+pod 'KeyboardHelper', '~> 0.9'
 ~~~ 
 
 ### Swit Package Manager
