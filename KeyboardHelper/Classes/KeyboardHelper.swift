@@ -13,7 +13,7 @@ import UIKit
     Protocol `KeyboardNotificationDelegate` requires two functions.
     Function `keyboardWillAppear` and `keyboardWillDisappear` with parameter `info` struct `KeyboardAppearanceInfo`.
 */
-public protocol KeyboardNotificationDelegate {
+public protocol KeyboardNotificationDelegate: class {
     
     /**
         This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
@@ -36,7 +36,7 @@ public class KeyboardHelper {
     /**
         Delegate that conforms with the `KeyboardNotificationDelegate`.
     */
-    public let delegate: KeyboardNotificationDelegate?
+    public weak var delegate: KeyboardNotificationDelegate?
     
     /**
         Initialize the `delegate` and add the two observer for `keyboardWillAppear` and `keyboardWillDisappear`.
