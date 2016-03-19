@@ -41,7 +41,78 @@ let package = Package(
 **NOTE:** This doesn't currently work as SPM doesn't support iOS, but once it will we will already be supporting it! :)
 
 ## 🔧 Setup
-> **TODO:** Add instructions
+Implement `KeyboardNotificationDelegate` in your UIViewController.
+
+```swift
+class ViewController: UIViewController, KeyboardNotificationDelegate
+```
+
+Add a `KeyboardHelper` private variable and initialize it, setting the delegate.
+
+```swift
+private var keyboardHelper : KeyboardHelper?
+...
+self.keyboardHelper = KeyboardHelper(delegate: self)
+```
+Implement the two methods in the `KeyboardNotificationDelegate`: 
+
+```swift
+public func keyboardWillAppear(info: KeyboardHelper.KeyboardAppearanceInfo)
+public func keyboardWillDisappear(info: KeyboardHelper.KeyboardAppearanceInfo)
+```
+
+Both methods take as argument a `KeyboardAppearanceInfo` object, which is basically a wrapper over the `userInfo` dictionary of the `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification` notifications.
+
+One example of implementation for the two delegate methods is:
+
+```swift
+func keyboardWillAppear(info: KeyboardAppearanceInfo) {
+        UIView.animateWithDuration(NSTimeInterval(info.animationDuration),
+            delay: 0,
+            options: info.animationOptions,
+            animations: {
+                let insets = UIEdgeInsetsMake(0, 0, info.endFrame.size.height, 0)
+                self.scrollView.contentInset = insets
+                self.scrollView.scrollIndicatorInsets = insets
+            },
+            completion:nil)
+    }
+    
+    func keyboardWillDisappear(info: KeyboardAppearanceInfo) {
+        UIView.animateWithDuration(NSTimeInterval(info.animationDuration),
+            delay: 0,
+            options: info.animationOptions,
+            animations: {
+                let insets = UIEdgeInsetsZero
+                self.scrollView.contentInset = insets
+                self.scrollView.scrollIndicatorInsets = insets
+            },
+            completion:nil)
+    }
+```
+
+The `KeyboardAppearanceInfo` object has the following properties:
+
+* `beginFrame`: a `CGRect` corresponding to the value for `UIKeyboardFrameBeginUserInfoKey`
+* `endFrame `: a `CGRect` corresponding to the value for `UIKeyboardFrameEndUserInfoKey`
+* `belongsToCurrentApp `: a `Bool` corresponding to the value for `UIKeyboardIsLocalUserInfoKey`
+* `animationDuration `: a `Double` corresponding to the value for `UIKeyboardAnimationDurationUserInfoKey`
+* `animationCurve `: a `UIViewAnimationCurve` corresponding to the value for `UIKeyboardAnimationCurveUserInfoKey`
+* `animationOptions `: a `UIViewAnimationOptions ` from the value of `UIKeyboardAnimationCurveUserInfoKey`
+
+`KeyboardAppearanceInfo` also has the convenience method `animateAlong:completion:`, which can be used like this:
+
+```swift
+func keyboardWillAppear(info: KeyboardAppearanceInfo) {
+	info.animateAlong({ () -> Void in
+            let insets = UIEdgeInsetsMake(0, 0, info.endFrame.size.height, 0)
+            self.scrollView.contentInset = insets
+            self.scrollView.scrollIndicatorInsets = insets
+        })  { finished in }
+
+```
+to get the same effect as the initial `keyboardWillAppear:` implementation example above.
+
 
 
 ## 👥 Credits
