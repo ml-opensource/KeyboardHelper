@@ -11,7 +11,7 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 ![Swift Package Manager](https://img.shields.io/badge/SPM-compatible-brightgreen.svg)
 ![Plaform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nodes-ios/KeyboardHelper/blob/master/LICENSE)
-
+[![Readme Score](http://readme-score-api.herokuapp.com/score.svg?url=https://github.com/nodes-ios/keyboardhelper)](http://clayallsopp.github.io/readme-score?url=https://github.com/nodes-ios/keyboardhelper)
 ## 📦 Installation
 
 ### Carthage
