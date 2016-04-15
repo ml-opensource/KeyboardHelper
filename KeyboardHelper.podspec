@@ -54,9 +54,7 @@ Pod::Spec.new do |s|
   #
 
   s.author             = { "Nodes Agency - iOS" => "ios@nodes.dk" }
-  # Or just: s.author    = "Nodes Agency - iOS"
-  # s.authors            = { "Nodes Agency - iOS" => "cr@nodes.dk" }
-  s.social_media_url   = "https://www.facebook.com/nodesagency"
+  s.social_media_url   = "http://twitter.com/nodes_ios"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
