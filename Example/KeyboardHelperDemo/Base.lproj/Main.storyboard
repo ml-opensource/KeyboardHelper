@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KeyboardHelperDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sce-Tz-KFF">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Syl-fY-dTA">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                        <subviews>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="M5O-eK-dvi">
+                                                <rect key="frame" x="40" y="530" width="520" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap in the text field to open the keyboard." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5KG-2K-nZy">
+                                                <rect key="frame" x="141" y="279" width="318" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="5KG-2K-nZy" firstAttribute="centerX" secondItem="Syl-fY-dTA" secondAttribute="centerX" id="SQ3-kt-Z36"/>
+                                            <constraint firstItem="M5O-eK-dvi" firstAttribute="top" secondItem="Syl-fY-dTA" secondAttribute="top" constant="520" id="TrJ-bV-pX5"/>
+                                            <constraint firstItem="5KG-2K-nZy" firstAttribute="centerY" secondItem="Syl-fY-dTA" secondAttribute="centerY" id="gUn-Z6-LaD"/>
+                                            <constraint firstAttribute="trailing" secondItem="M5O-eK-dvi" secondAttribute="trailing" constant="40" id="ic7-Ix-Sds"/>
+                                            <constraint firstItem="M5O-eK-dvi" firstAttribute="leading" secondItem="Syl-fY-dTA" secondAttribute="leading" constant="40" id="k8s-hX-rEN"/>
+                                            <constraint firstAttribute="bottom" secondItem="M5O-eK-dvi" secondAttribute="bottom" constant="20" id="neu-gW-UKZ"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="TrJ-bV-pX5"/>
+                                            </mask>
+                                        </variation>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Syl-fY-dTA" firstAttribute="height" secondItem="sce-Tz-KFF" secondAttribute="height" id="AVU-Az-HEl"/>
+                                    <constraint firstAttribute="trailing" secondItem="Syl-fY-dTA" secondAttribute="trailing" id="Re6-uT-ycB"/>
+                                    <constraint firstItem="Syl-fY-dTA" firstAttribute="top" secondItem="sce-Tz-KFF" secondAttribute="top" id="ZkB-hj-qV8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Syl-fY-dTA" secondAttribute="bottom" id="axn-Ia-MK9"/>
+                                    <constraint firstItem="Syl-fY-dTA" firstAttribute="leading" secondItem="sce-Tz-KFF" secondAttribute="leading" id="gLK-cn-JBi"/>
+                                    <constraint firstItem="Syl-fY-dTA" firstAttribute="width" secondItem="sce-Tz-KFF" secondAttribute="width" id="xWW-xs-37X"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sce-Tz-KFF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Nvz-g3-lzo"/>
+                            <constraint firstItem="sce-Tz-KFF" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Z8N-PT-ijX"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sce-Tz-KFF" secondAttribute="bottom" id="aEn-6D-DOQ"/>
+                            <constraint firstAttribute="trailing" secondItem="sce-Tz-KFF" secondAttribute="trailing" id="jke-Se-4NB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="scrollView" destination="sce-Tz-KFF" id="Owa-bd-3t3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
