@@ -14,11 +14,11 @@ class ShowSpyDelegate : KeyboardNotificationDelegate {
     
     var expectation : XCTestExpectation?
     
-    func keyboardWillDisappear(info: KeyboardAppearanceInfo) {
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
         
     }
     
-    func keyboardWillAppear(info: KeyboardAppearanceInfo) {
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
         guard let expectation = expectation else {
             XCTFail("ShowSpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -34,7 +34,7 @@ class HideSpyDelegate : KeyboardNotificationDelegate {
     
     var expectation : XCTestExpectation?
     
-    func keyboardWillDisappear(info: KeyboardAppearanceInfo) {
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
         guard let expectation = expectation else {
             XCTFail("HideSpyDelegate was not setup correctly. Missing XCTExpectation reference")
             return
@@ -44,7 +44,7 @@ class HideSpyDelegate : KeyboardNotificationDelegate {
         expectation.fulfill()
     }
     
-    func keyboardWillAppear(info: KeyboardAppearanceInfo) {
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
         
     }
 }
@@ -55,33 +55,33 @@ class KeyboardHelperTests: XCTestCase {
         let spyDelegate = ShowSpyDelegate()
         let kh = KeyboardHelper(delegate: spyDelegate)
         
-        let expectation = expectationWithDescription("KeyboardHelper calls the delegate as the result of receiving the show notification")
+        let expectation = self.expectation(withDescription: "KeyboardHelper calls the delegate as the result of receiving the show notification")
         spyDelegate.expectation = expectation
         
 //        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillShowNotification, object: kh)
-        let notification : NSNotification
+        let notification : Notification
         if #available(iOS 9.0, *) {
-            notification = NSNotification(name: UIKeyboardWillShowNotification, object: kh, userInfo:[
-                UIKeyboardAnimationCurveUserInfoKey : NSNumber(int: 7),
-                UIKeyboardAnimationDurationUserInfoKey : NSNumber(double: 0.25),
-                UIKeyboardFrameBeginUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
-                UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 409, width: 375, height: 258)),
-                UIKeyboardIsLocalUserInfoKey : NSNumber(bool: true)
+            notification = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: kh, userInfo:[
+                UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
+                UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
+                UIKeyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258)),
+                UIKeyboardIsLocalUserInfoKey : NSNumber(value: true)
                 ])
         } else {
-            notification = NSNotification(name: UIKeyboardWillShowNotification, object: nil, userInfo:[
-                UIKeyboardAnimationCurveUserInfoKey : NSNumber(int: 7),
-                UIKeyboardAnimationDurationUserInfoKey : NSNumber(double: 0.25),
-                UIKeyboardFrameBeginUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
-                UIKeyboardFrameEndUserInfoKey : NSValue(CGRect: CGRect(x: 0, y: 409, width: 375, height: 258))
+            notification = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo:[
+                UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
+                UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
+                UIKeyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258))
                 ])
         }
         
-        NSNotificationCenter.defaultCenter().postNotification(notification)
+        NotificationCenter.default.post(notification)
         
         
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(withTimeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -104,13 +104,13 @@ class KeyboardHelperTests: XCTestCase {
         let spyDelegate = HideSpyDelegate()
         let kh = KeyboardHelper(delegate: spyDelegate)
         
-        let expectation = expectationWithDescription("KeyboardHelper calls the delegate as the result of receiving the hide notification")
+        let expectation = self.expectation(withDescription: "KeyboardHelper calls the delegate as the result of receiving the hide notification")
         spyDelegate.expectation = expectation
         
-        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillHideNotification, object: kh)
+        NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: kh)
         
         
-        waitForExpectationsWithTimeout(1) { error in
+        waitForExpectations(withTimeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }

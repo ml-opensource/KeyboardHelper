@@ -2,7 +2,7 @@
 //  KeyboardAppearanceInfo.swift
 //  KeyboardHelper
 //
-//  Created by Timmi Trinks on 04/02/16.
+//  Created by Kasper Welner on 04/02/16.
 //  Copyright © 2016 Nodes. All rights reserved.
 //
 
@@ -14,12 +14,12 @@ import UIKit
 */
 public struct KeyboardAppearanceInfo {
     
-    public let notification: NSNotification
+    public let notification: Notification
     public let userInfo: [NSObject: AnyObject]
     
-    public init(notification: NSNotification) {
+    public init(notification: Notification) {
         self.notification = notification
-        self.userInfo = notification.userInfo ?? [:]
+        self.userInfo = (notification as NSNotification).userInfo ?? [:]
     }
     
     /**
@@ -27,7 +27,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
     */
     public var beginFrame: CGRect {
-        return userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue ?? CGRectZero
+        return userInfo[UIKeyboardFrameBeginUserInfoKey]?.cgRectValue ?? CGRect.zero
     }
     
     /**
@@ -35,7 +35,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
      */
     public var endFrame: CGRect {
-        return userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue ?? CGRectZero
+        return userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue ?? CGRect.zero
     }
     
     /**
@@ -64,8 +64,8 @@ public struct KeyboardAppearanceInfo {
      By default: `EaseInOut`.
      */
     public var animationCurve: UIViewAnimationCurve {
-        guard let value = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? Int else { return .EaseInOut }
-        return UIViewAnimationCurve(rawValue: value) ?? .EaseInOut
+        guard let value = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? Int else { return .easeInOut }
+        return UIViewAnimationCurve(rawValue: value) ?? .easeInOut
     }
     
     /**
@@ -84,9 +84,9 @@ public struct KeyboardAppearanceInfo {
         - animationBlock: Animation that should happen.
         - completion: Function that happens after the animation is finished.
     */
-    public func animateAlong(animationBlock: () -> Void, completion: (finished: Bool) -> Void) {
-        UIView.animateWithDuration(
-            animationDuration,
+    public func animateAlong(_ animationBlock: () -> Void, completion: (finished: Bool) -> Void) {
+        UIView.animate(
+            withDuration: animationDuration,
             delay: 0.0,
             options: animationOptions,
             animations: animationBlock,
