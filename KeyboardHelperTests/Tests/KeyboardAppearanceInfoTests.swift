@@ -75,7 +75,7 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     }
     
     func testAnimateAlong() {
-        let expectation = self.expectation(withDescription: "Animate along should take 3 seconds")
+        let expectation = self.expectation(description: "Animate along should take 3 seconds")
         
         apperanceInfo.animateAlong({ () -> Void in
             // Do animations
@@ -85,7 +85,7 @@ class KeyboardAppearanceInfoTests: XCTestCase {
                 }
         }
         
-        waitForExpectations(withTimeout: 3.005, handler: nil)
+        waitForExpectations(timeout: 3.005, handler: nil)
     }
     
 }
