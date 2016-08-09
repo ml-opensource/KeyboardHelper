@@ -55,7 +55,7 @@ class KeyboardHelperTests: XCTestCase {
         let spyDelegate = ShowSpyDelegate()
         let kh = KeyboardHelper(delegate: spyDelegate)
         
-        let expectation = self.expectation(withDescription: "KeyboardHelper calls the delegate as the result of receiving the show notification")
+        let expectation = self.expectation(description: "KeyboardHelper calls the delegate as the result of receiving the show notification")
         spyDelegate.expectation = expectation
         
 //        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillShowNotification, object: kh)
@@ -81,7 +81,7 @@ class KeyboardHelperTests: XCTestCase {
         
         
         
-        waitForExpectations(withTimeout: 1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
@@ -104,13 +104,13 @@ class KeyboardHelperTests: XCTestCase {
         let spyDelegate = HideSpyDelegate()
         let kh = KeyboardHelper(delegate: spyDelegate)
         
-        let expectation = self.expectation(withDescription: "KeyboardHelper calls the delegate as the result of receiving the hide notification")
+        let expectation = self.expectation(description: "KeyboardHelper calls the delegate as the result of receiving the hide notification")
         spyDelegate.expectation = expectation
         
         NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: kh)
         
         
-        waitForExpectations(withTimeout: 1) { error in
+        waitForExpectations(timeout: 1) { error in
             if let error = error {
                 XCTFail("waitForExpectationsWithTimeout errored: \(error)")
             }
