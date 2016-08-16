@@ -15,11 +15,11 @@ import UIKit
 public struct KeyboardAppearanceInfo {
     
     public let notification: Notification
-    public let userInfo: [NSObject: AnyObject]
+    public let userInfo: [AnyHashable: Any]
     
     public init(notification: Notification) {
         self.notification = notification
-        self.userInfo = (notification as NSNotification).userInfo ?? [:]
+        self.userInfo = notification.userInfo ?? [:]
     }
     
     /**
@@ -27,7 +27,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
     */
     public var beginFrame: CGRect {
-        return userInfo[UIKeyboardFrameBeginUserInfoKey]?.cgRectValue ?? CGRect.zero
+        return (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     /**
@@ -35,7 +35,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
      */
     public var endFrame: CGRect {
-        return userInfo[UIKeyboardFrameEndUserInfoKey]?.cgRectValue ?? CGRect.zero
+        return (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     /**
@@ -45,7 +45,7 @@ public struct KeyboardAppearanceInfo {
      */
     public var belongsToCurrentApp: Bool {
         if #available(iOS 9.0, *) {
-            return userInfo[UIKeyboardIsLocalUserInfoKey]?.boolValue ?? true
+            return (userInfo[UIKeyboardIsLocalUserInfoKey] as? NSString)?.boolValue ?? true
         } else {
             return true
         }
@@ -56,7 +56,7 @@ public struct KeyboardAppearanceInfo {
      By default: `0.25`.
      */
     public var animationDuration: Double {
-        return userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0.25
+        return (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSString)?.doubleValue ?? 0.25
     }
     
     /**
@@ -84,7 +84,7 @@ public struct KeyboardAppearanceInfo {
         - animationBlock: Animation that should happen.
         - completion: Function that happens after the animation is finished.
     */
-    public func animateAlong(_ animationBlock: () -> Void, completion: (finished: Bool) -> Void) {
+    public func animateAlong(_ animationBlock: @escaping () -> Void, completion: @escaping (_ finished: Bool) -> Void) {
         UIView.animate(
             withDuration: animationDuration,
             delay: 0.0,
