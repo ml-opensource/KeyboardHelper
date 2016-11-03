@@ -35,7 +35,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
      */
     public var endFrame: CGRect {
-        return (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
+        return (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     /**
@@ -45,7 +45,7 @@ public struct KeyboardAppearanceInfo {
      */
     public var belongsToCurrentApp: Bool {
         if #available(iOS 9.0, *) {
-            return (userInfo[UIKeyboardIsLocalUserInfoKey] as? NSString)?.boolValue ?? true
+            return (userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool) ?? true
         } else {
             return true
         }
@@ -56,7 +56,7 @@ public struct KeyboardAppearanceInfo {
      By default: `0.25`.
      */
     public var animationDuration: Double {
-        return (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSString)?.doubleValue ?? 0.25
+        return (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
     }
     
     /**
