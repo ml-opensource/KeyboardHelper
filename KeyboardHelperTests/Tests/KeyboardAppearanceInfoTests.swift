@@ -11,7 +11,7 @@ import KeyboardHelper
 
 class KeyboardAppearanceInfoTests: XCTestCase {
     
-    var apperanceInfo: KeyboardAppearanceInfo!
+    var appearanceInfo: KeyboardAppearanceInfo!
     var defaultsAppearanceInfo : KeyboardAppearanceInfo!
     
     override func setUp() {
@@ -33,20 +33,20 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     
         // Fake the notification
         let note = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: testUserInfo)
-        apperanceInfo = KeyboardAppearanceInfo(notification: note)
+        appearanceInfo = KeyboardAppearanceInfo(notification: note)
         let defaultNote = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: nil)
         defaultsAppearanceInfo = KeyboardAppearanceInfo(notification: defaultNote)
     }
     
     func testBeginFrame() {
-        XCTAssertEqual(apperanceInfo.beginFrame, CGRect(x: 100, y: 100, width: 100, height: 100),
+        XCTAssertEqual(appearanceInfo.beginFrame, CGRect(x: 100, y: 100, width: 100, height: 100),
             "Parsing beginFrame from keyboard appearance info failed.")
         XCTAssertEqual(defaultsAppearanceInfo.beginFrame, CGRect.zero,
             "Parsing default beginFrame from keyboard appearance info failed.")
     }
     
     func testEndFrame() {
-        XCTAssertEqual(apperanceInfo.endFrame, CGRect(x: 200, y: 200, width: 200, height: 200),
+        XCTAssertEqual(appearanceInfo.endFrame, CGRect(x: 200, y: 200, width: 200, height: 200),
             "Parsing endFrame from keyboard appearance info failed.")
         XCTAssertEqual(defaultsAppearanceInfo.endFrame, CGRect.zero,
             "Parsing default endFrame from keyboard appearance info failed.")
@@ -54,21 +54,22 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     
     @available(iOS 9.0, *)
     func testBelongsToCurrentApp() {
-        XCTAssertEqual(apperanceInfo.belongsToCurrentApp, false,
+        XCTAssertEqual(appearanceInfo.belongsToCurrentApp, false,
             "Parsing belongsToCurrentApp from keyboard appearance info failed.")
         XCTAssertEqual(defaultsAppearanceInfo.belongsToCurrentApp, true,
             "Parsing default belongsToCurrentApp from keyboard appearance info failed.")
     }
     
     func testAnimationDuration() {
-        XCTAssertEqual(apperanceInfo.animationDuration, Double(3),
+        
+        XCTAssertEqual(appearanceInfo.animationDuration, Double(3),
             "Parsing animationDuration from keyboard appearance info failed.")
         XCTAssertEqual(defaultsAppearanceInfo.animationDuration, Double(0.25),
             "Parsing default animationDuration from keyboard appearance info failed.")
     }
     
     func testAnimationCurve() {
-        XCTAssertEqual(apperanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 2),
+        XCTAssertEqual(appearanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 2),
             "Parsing animationCurve from keyboard appearance info failed.")
         XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIViewAnimationCurve(rawValue: defaultsAppearanceInfo.animationCurve.rawValue),
             "Parsing default animationCurve from keyboard appearance info failed.")
@@ -77,7 +78,7 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     func testAnimateAlong() {
         let expectation = self.expectation(description: "Animate along should take 3 seconds")
         
-        apperanceInfo.animateAlong({ () -> Void in
+        appearanceInfo.animateAlong({ () -> Void in
             // Do animations
             }) { (finished) -> Void in
                 if finished {
