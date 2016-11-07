@@ -84,7 +84,7 @@ public struct KeyboardAppearanceInfo {
         - animationBlock: Animation that should happen.
         - completion: Function that happens after the animation is finished.
     */
-    public func animateAlong(_ animationBlock: @escaping () -> Void, completion: @escaping (_ finished: Bool) -> Void) {
+    public func animateAlong(_ animationBlock: @escaping (() -> Void), completion: @escaping ((_ finished: Bool) -> Void) = { _ in }) {
         UIView.animate(
             withDuration: animationDuration,
             delay: 0.0,
