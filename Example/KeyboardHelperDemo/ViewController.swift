@@ -11,8 +11,8 @@ import KeyboardHelper
 
 class ViewController: UIViewController, KeyboardNotificationDelegate {
     
-    private var tapGesture: UITapGestureRecognizer!
-    private var keyboardHelper : KeyboardHelper?
+    fileprivate var tapGesture: UITapGestureRecognizer!
+    fileprivate var keyboardHelper : KeyboardHelper?
     @IBOutlet weak var scrollView: UIScrollView!
 
     override func viewDidLoad() {
@@ -21,7 +21,7 @@ class ViewController: UIViewController, KeyboardNotificationDelegate {
         
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(ViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tapGesture)
-        self.tapGesture.enabled = true
+        self.tapGesture.isEnabled = true
         
         self.keyboardHelper = KeyboardHelper(delegate: self)
     }
@@ -30,7 +30,7 @@ class ViewController: UIViewController, KeyboardNotificationDelegate {
         self.view.endEditing(true)
     }
     
-    func keyboardWillAppear(info: KeyboardAppearanceInfo) {
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
         info.animateAlong({ () -> Void in
             let insets = UIEdgeInsetsMake(0, 0, info.endFrame.size.height, 0)
             self.scrollView.contentInset = insets
@@ -38,12 +38,12 @@ class ViewController: UIViewController, KeyboardNotificationDelegate {
         })  { finished in }
     }
     
-    func keyboardWillDisappear(info: KeyboardAppearanceInfo) {
-        UIView.animateWithDuration(NSTimeInterval(info.animationDuration),
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
+        UIView.animate(withDuration: TimeInterval(info.animationDuration),
             delay: 0,
             options: info.animationOptions,
             animations: {
-                let insets = UIEdgeInsetsZero
+                let insets = UIEdgeInsets.zero
                 self.scrollView.contentInset = insets
                 self.scrollView.scrollIndicatorInsets = insets
             },

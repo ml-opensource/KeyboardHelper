@@ -57,8 +57,8 @@ self.keyboardHelper = KeyboardHelper(delegate: self)
 Implement the two methods in the `KeyboardNotificationDelegate`: 
 
 ```swift
-public func keyboardWillAppear(info: KeyboardHelper.KeyboardAppearanceInfo)
-public func keyboardWillDisappear(info: KeyboardHelper.KeyboardAppearanceInfo)
+public func keyboardWillAppear(_ info: KeyboardHelper.KeyboardAppearanceInfo)
+public func keyboardWillDisappear(_ info: KeyboardHelper.KeyboardAppearanceInfo)
 ```
 
 Both methods take as argument a `KeyboardAppearanceInfo` object, which is basically a wrapper over the `userInfo` dictionary of the `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification` notifications.
@@ -66,8 +66,8 @@ Both methods take as argument a `KeyboardAppearanceInfo` object, which is basica
 One example of implementation for the two delegate methods is:
 
 ```swift
-func keyboardWillAppear(info: KeyboardAppearanceInfo) {
-        UIView.animateWithDuration(NSTimeInterval(info.animationDuration),
+func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
+        UIView.animate(withDuration: TimeInterval(info.animationDuration),
             delay: 0,
             options: info.animationOptions,
             animations: {
@@ -78,8 +78,8 @@ func keyboardWillAppear(info: KeyboardAppearanceInfo) {
             completion:nil)
     }
     
-    func keyboardWillDisappear(info: KeyboardAppearanceInfo) {
-        UIView.animateWithDuration(NSTimeInterval(info.animationDuration),
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
+        UIView.animate(withDuration: TimeInterval(info.animationDuration),
             delay: 0,
             options: info.animationOptions,
             animations: {
