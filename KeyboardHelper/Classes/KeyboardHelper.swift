@@ -2,7 +2,7 @@
 //  KeyboardHelper.swift
 //  KeyboardHelper
 //
-//  Created by Timmi Trinks on 27/01/16.
+//  Created by Kasper Welner on 27/01/16.
 //  Copyright © 2016 Nodes. All rights reserved.
 //
 
@@ -19,13 +19,13 @@ public protocol KeyboardNotificationDelegate: class {
         This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
         - Parameter info: Struct `KeyboardAppearanceInfo`.
      */
-    func keyboardWillAppear(info: KeyboardAppearanceInfo)
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo)
     
     /**
         This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will disappaear.
         - Parameter info: Struct `KeyboardAppearanceInfo`.
      */
-    func keyboardWillDisappear(info: KeyboardAppearanceInfo)
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo)
 }
 
 /**
@@ -45,25 +45,25 @@ public class KeyboardHelper {
     required public init(delegate: KeyboardNotificationDelegate) {
         self.delegate = delegate
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(KeyboardHelper.keyboardWillAppear(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     private init() {
         delegate = nil
     }
     
-    dynamic private func keyboardWillAppear(note: NSNotification) {
+    dynamic private func keyboardWillAppear(_ note: Notification) {
         let info = KeyboardAppearanceInfo(notification: note)
         self.delegate?.keyboardWillAppear(info)
     }
     
-    dynamic private func keyboardWillDisappear(note: NSNotification) {
+    dynamic private func keyboardWillDisappear(_ note: Notification) {
         let info = KeyboardAppearanceInfo(notification: note)
         self.delegate?.keyboardWillDisappear(info)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }

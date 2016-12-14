@@ -2,7 +2,7 @@
 //  KeyboardAppearanceInfo.swift
 //  KeyboardHelper
 //
-//  Created by Timmi Trinks on 04/02/16.
+//  Created by Kasper Welner on 04/02/16.
 //  Copyright © 2016 Nodes. All rights reserved.
 //
 
@@ -14,10 +14,10 @@ import UIKit
 */
 public struct KeyboardAppearanceInfo {
     
-    public let notification: NSNotification
-    public let userInfo: [NSObject: AnyObject]
+    public let notification: Notification
+    public let userInfo: [AnyHashable: Any]
     
-    public init(notification: NSNotification) {
+    public init(notification: Notification) {
         self.notification = notification
         self.userInfo = notification.userInfo ?? [:]
     }
@@ -27,7 +27,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
     */
     public var beginFrame: CGRect {
-        return userInfo[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue ?? CGRectZero
+        return (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     /**
@@ -35,7 +35,7 @@ public struct KeyboardAppearanceInfo {
      Return a `CGRect` or `CGRectZero`.
      */
     public var endFrame: CGRect {
-        return userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue ?? CGRectZero
+        return (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     /**
@@ -45,7 +45,7 @@ public struct KeyboardAppearanceInfo {
      */
     public var belongsToCurrentApp: Bool {
         if #available(iOS 9.0, *) {
-            return userInfo[UIKeyboardIsLocalUserInfoKey]?.boolValue ?? true
+            return (userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool) ?? true
         } else {
             return true
         }
@@ -56,7 +56,7 @@ public struct KeyboardAppearanceInfo {
      By default: `0.25`.
      */
     public var animationDuration: Double {
-        return userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue ?? 0.25
+        return (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
     }
     
     /**
@@ -64,8 +64,8 @@ public struct KeyboardAppearanceInfo {
      By default: `EaseInOut`.
      */
     public var animationCurve: UIViewAnimationCurve {
-        guard let value = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? Int else { return .EaseInOut }
-        return UIViewAnimationCurve(rawValue: value) ?? .EaseInOut
+        guard let value = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? Int else { return .easeInOut }
+        return UIViewAnimationCurve(rawValue: value) ?? .easeInOut
     }
     
     /**
@@ -84,9 +84,9 @@ public struct KeyboardAppearanceInfo {
         - animationBlock: Animation that should happen.
         - completion: Function that happens after the animation is finished.
     */
-    public func animateAlong(animationBlock: () -> Void, completion: (finished: Bool) -> Void) {
-        UIView.animateWithDuration(
-            animationDuration,
+    public func animateAlong(_ animationBlock: @escaping (() -> Void), completion: @escaping ((_ finished: Bool) -> Void) = { _ in }) {
+        UIView.animate(
+            withDuration: animationDuration,
             delay: 0.0,
             options: animationOptions,
             animations: animationBlock,
