@@ -15,30 +15,23 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 ## 📦 Installation
 
 ### Carthage
+~~~bash
+github "nodes-ios/KeyboardHelper" ~> 1.0
 ~~~
-github "nodes-ios/KeyboardHelper"
-~~~
+
+> Last versions compatible with lower Swift versions:  
+>
+> **Swift 2.3**  
+> `github "nodes-ios/KeyboardHelper" == 0.10.0`
+>
+> **Swift 2.2**  
+> `github "nodes-ios/KeyboardHelper" == 0.9.4`
 
 ### CocoaPods
 ~~~
-pod 'KeyboardHelper', '~> 0.9'
+pod 'KeyboardHelper', '~> 1.0'
 ~~~ 
 
-### Swit Package Manager
-To use KeyboardHelper as a [Swift Package Manager](https://swift.org/package-manager/) package just add the following to your `Package.swift` file.  
-
-~~~swift
-import PackageDescription
-
-let package = Package(
-    name: "YourPackage",
-    dependencies: [
-        .Package(url: "https://github.com/nodes-ios/KeyboardHelper.git", majorVersion: 0)
-    ]
-)
-~~~
-
-**NOTE:** This doesn't currently work as SPM doesn't support iOS, but once it will we will already be supporting it! :)
 
 ## 🔧 Setup
 Implement `KeyboardNotificationDelegate` in your UIViewController.
@@ -47,12 +40,16 @@ Implement `KeyboardNotificationDelegate` in your UIViewController.
 class ViewController: UIViewController, KeyboardNotificationDelegate
 ```
 
-Add a `KeyboardHelper` private variable and initialize it, setting the delegate.
+Add a `KeyboardHelper` private variable, initialize it and set the delegate.
 
 ```swift
 private var keyboardHelper : KeyboardHelper?
-...
-self.keyboardHelper = KeyboardHelper(delegate: self)
+
+func viewDidLoad() {
+	...
+	self.keyboardHelper = KeyboardHelper(delegate: self)
+	...
+}
 ```
 Implement the two methods in the `KeyboardNotificationDelegate`: 
 
@@ -78,17 +75,17 @@ func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
             completion:nil)
     }
     
-    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
-        UIView.animate(withDuration: TimeInterval(info.animationDuration),
-            delay: 0,
-            options: info.animationOptions,
-            animations: {
-                let insets = UIEdgeInsetsZero
-                self.scrollView.contentInset = insets
-                self.scrollView.scrollIndicatorInsets = insets
-            },
-            completion:nil)
-    }
+func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
+    UIView.animate(withDuration: TimeInterval(info.animationDuration),
+        delay: 0,
+        options: info.animationOptions,
+        animations: {
+            let insets = UIEdgeInsetsZero
+            self.scrollView.contentInset = insets
+            self.scrollView.scrollIndicatorInsets = insets
+        },
+        completion:nil)
+}
 ```
 
 The `KeyboardAppearanceInfo` object has the following properties:
