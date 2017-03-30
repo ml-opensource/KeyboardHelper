@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 
 /**
-    Protocol `KeyboardNotificationDelegate` requires two functions.
+    Protocol `KeyboardHelperDelegate` requires two functions.
     Function `keyboardWillAppear` and `keyboardWillDisappear` with parameter `info` struct `KeyboardAppearanceInfo`.
 */
-public protocol KeyboardNotificationDelegate: class {
+
+public protocol KeyboardHelperDelegate: class {
     
     /**
         This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
@@ -34,15 +35,15 @@ public protocol KeyboardNotificationDelegate: class {
 public class KeyboardHelper {
     
     /**
-        Delegate that conforms with the `KeyboardNotificationDelegate`.
+        Delegate that conforms with the `KeyboardHelperDelegate`.
     */
-    public weak var delegate: KeyboardNotificationDelegate?
+    public weak var delegate: KeyboardHelperDelegate?
     
     /**
         Initialize the `delegate` and add the two observer for `keyboardWillAppear` and `keyboardWillDisappear`.
         Observers are nessecary for tracking the `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification`, so the function that are connectet are getting fired.
     */
-    required public init(delegate: KeyboardNotificationDelegate) {
+    required public init(delegate: KeyboardHelperDelegate) {
         self.delegate = delegate
         
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -67,3 +68,6 @@ public class KeyboardHelper {
         NotificationCenter.default.removeObserver(self)
     }
 }
+
+@available(*, deprecated, message: "KeyboardNotificationDelegate has been renamed to KeyboardHelperDelegate")
+public typealias KeyboardNotificationDelegate = KeyboardHelperDelegate

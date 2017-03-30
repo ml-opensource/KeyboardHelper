@@ -34,7 +34,7 @@ pod 'KeyboardHelper', '~> 1.0'
 
 
 ## 🔧 Setup
-Implement `KeyboardNotificationDelegate` in your UIViewController.
+Implement `KeyboardHelperDelegate` in your UIViewController.
 
 ```swift
 class ViewController: UIViewController, KeyboardNotificationDelegate
@@ -51,7 +51,7 @@ func viewDidLoad() {
 	...
 }
 ```
-Implement the two methods in the `KeyboardNotificationDelegate`: 
+Implement the two methods in the `KeyboardHelperDelegate`: 
 
 ```swift
 public func keyboardWillAppear(_ info: KeyboardHelper.KeyboardAppearanceInfo)
