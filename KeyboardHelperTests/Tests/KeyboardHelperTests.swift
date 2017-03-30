@@ -9,7 +9,7 @@
 import XCTest
 @testable import KeyboardHelper
 
-class ShowSpyDelegate : KeyboardNotificationDelegate {
+class ShowSpyDelegate : KeyboardHelperDelegate {
     var kai : KeyboardAppearanceInfo?
     
     var expectation : XCTestExpectation?
@@ -29,7 +29,7 @@ class ShowSpyDelegate : KeyboardNotificationDelegate {
     }
 }
 
-class HideSpyDelegate : KeyboardNotificationDelegate {
+class HideSpyDelegate : KeyboardHelperDelegate {
     var kai : KeyboardAppearanceInfo?
     
     var expectation : XCTestExpectation?

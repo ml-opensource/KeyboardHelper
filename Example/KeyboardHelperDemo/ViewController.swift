@@ -9,7 +9,7 @@
 import UIKit
 import KeyboardHelper
 
-class ViewController: UIViewController, KeyboardNotificationDelegate {
+class ViewController: UIViewController, KeyboardHelperDelegate {
     
     fileprivate var tapGesture: UITapGestureRecognizer!
     fileprivate var keyboardHelper : KeyboardHelper?
