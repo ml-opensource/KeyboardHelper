@@ -95,7 +95,11 @@ class KeyboardHelperTests: XCTestCase {
             XCTAssertEqual(result.animationDuration, 0.25)
             XCTAssertEqual(result.beginFrame, CGRect(x: 0, y: 667, width: 375, height: 0))
             XCTAssertEqual(result.endFrame, CGRect(x: 0, y: 409, width: 375, height: 258))
-            XCTAssertEqual(result.belongsToCurrentApp, true)
+            if #available(iOS 9.0, *) {
+                XCTAssertEqual(result.belongsToCurrentApp, true)
+            } else {
+                // don't test this
+            }
 
         }
     }
