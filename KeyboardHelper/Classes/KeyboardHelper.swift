@@ -50,10 +50,6 @@ public class KeyboardHelper {
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
-    private init() {
-        delegate = nil
-    }
-    
     dynamic private func keyboardWillAppear(_ note: Notification) {
         let info = KeyboardAppearanceInfo(notification: note)
         self.delegate?.keyboardWillAppear(info)

@@ -69,9 +69,9 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     }
     
     func testAnimationCurve() {
-        XCTAssertEqual(appearanceInfo.animationCurve, UIViewAnimationCurve(rawValue: 2),
+        XCTAssertEqual(appearanceInfo.animationCurve, UIViewAnimationCurve.easeOut,
             "Parsing animationCurve from keyboard appearance info failed.")
-        XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIViewAnimationCurve(rawValue: defaultsAppearanceInfo.animationCurve.rawValue),
+        XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIViewAnimationCurve.easeInOut,
             "Parsing default animationCurve from keyboard appearance info failed.")
     }
     

@@ -43,12 +43,10 @@ public struct KeyboardAppearanceInfo {
      That variable will help to keep track of which app uses the keyboard at the moment.
      If it is the current app it is true, if not it is false.
      */
+    @available(iOS 9.0, *)
     public var belongsToCurrentApp: Bool {
-        if #available(iOS 9.0, *) {
-            return (userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool) ?? true
-        } else {
-            return true
-        }
+        return (userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool) ?? true
+        
     }
     
     /**
