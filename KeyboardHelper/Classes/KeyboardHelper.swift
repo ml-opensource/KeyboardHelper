@@ -9,40 +9,34 @@
 import Foundation
 import UIKit
 
-/**
-    Protocol `KeyboardHelperDelegate` requires two functions.
-    Function `keyboardWillAppear` and `keyboardWillDisappear` with parameter `info` struct `KeyboardAppearanceInfo`.
-*/
 
+/// Protocol `KeyboardHelperDelegate` requires two functions, `keyboardWillAppear` and `keyboardWillDisappear` with parameter `info` struct `KeyboardAppearanceInfo`.
 public protocol KeyboardHelperDelegate: class {
     
-    /**
-        This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
-        - Parameter info: Struct `KeyboardAppearanceInfo`.
-     */
+
+    /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
+    ///
+    /// - Parameter info: Struct `KeyboardAppearanceInfo`.
     func keyboardWillAppear(_ info: KeyboardAppearanceInfo)
+
     
-    /**
-        This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will disappaear.
-        - Parameter info: Struct `KeyboardAppearanceInfo`.
-     */
+    /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will disappaear.
+    ///
+    /// - Parameter info: Struct `KeyboardAppearanceInfo`.
     func keyboardWillDisappear(_ info: KeyboardAppearanceInfo)
 }
 
-/**
-    Useful helper to keep track of keyboard changes.
-*/
+
+/// Useful helper to keep track of keyboard changes.
 public class KeyboardHelper {
     
-    /**
-        Delegate that conforms with the `KeyboardHelperDelegate`.
-    */
+    /// Delegate that conforms with the `KeyboardHelperDelegate`.
     public weak var delegate: KeyboardHelperDelegate?
     
-    /**
-        Initialize the `delegate` and add the two observer for `keyboardWillAppear` and `keyboardWillDisappear`.
-        Observers are nessecary for tracking the `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification`, so the function that are connectet are getting fired.
-    */
+    /// Initialize the `delegate` and add the two observer for `keyboardWillAppear` and `keyboardWillDisappear`.
+    /// Observers are nessecary for tracking the `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification`, so the function that are connectet are getting fired.
+    ///
+    /// - Parameter delegate: KeyboardHelperDelegate
     required public init(delegate: KeyboardHelperDelegate) {
         self.delegate = delegate
         
@@ -50,6 +44,8 @@ public class KeyboardHelper {
         NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    
+    /// Making sure that you can't intantiate it without a delegate
     private init() {
         delegate = nil
     }
