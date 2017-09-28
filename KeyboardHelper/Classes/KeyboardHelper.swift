@@ -26,6 +26,11 @@ public protocol KeyboardHelperDelegate: class {
     func keyboardWillDisappear(_ info: KeyboardAppearanceInfo)
 }
 
+/// Hack to make protocol methods optional
+public extension KeyboardHelperDelegate {
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {}
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {}
+}
 
 /// Useful helper to keep track of keyboard changes.
 public class KeyboardHelper {

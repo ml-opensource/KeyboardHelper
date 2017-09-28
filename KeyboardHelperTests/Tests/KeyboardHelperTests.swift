@@ -43,10 +43,6 @@ class HideSpyDelegate : KeyboardHelperDelegate {
         kai = info
         expectation.fulfill()
     }
-    
-    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
-        
-    }
 }
 
 class KeyboardHelperTests: XCTestCase {
