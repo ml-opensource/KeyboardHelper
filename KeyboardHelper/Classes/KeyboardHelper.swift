@@ -12,13 +12,11 @@ import UIKit
 
 /// Protocol `KeyboardHelperDelegate` requires two functions, `keyboardWillAppear` and `keyboardWillDisappear` with parameter `info` struct `KeyboardAppearanceInfo`.
 public protocol KeyboardHelperDelegate: class {
-    
-
     /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
     ///
     /// - Parameter info: Struct `KeyboardAppearanceInfo`.
     func keyboardWillAppear(_ info: KeyboardAppearanceInfo)
-
+    
     
     /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will disappaear.
     ///
@@ -26,6 +24,22 @@ public protocol KeyboardHelperDelegate: class {
     func keyboardWillDisappear(_ info: KeyboardAppearanceInfo)
 }
 
+extension KeyboardHelperDelegate {
+    /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will appaear.
+    ///
+    /// - Parameter info: Struct `KeyboardAppearanceInfo`.
+    func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
+        // default empty implementation
+    }
+    
+    
+    /// This function will recongnize a change of `KeyboardAppearanceInfo` and will be fired when the keyboard will disappaear.
+    ///
+    /// - Parameter info: Struct `KeyboardAppearanceInfo`.
+    func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
+        // default empty implementation
+    }
+}
 
 /// Useful helper to keep track of keyboard changes.
 public class KeyboardHelper {
