@@ -21,6 +21,9 @@ github "nodes-ios/KeyboardHelper" ~> 1.0
 
 > Last versions compatible with lower Swift versions:  
 >
+> **Swift 3**  
+> `github "nodes-ios/KeyboardHelper" == 1.2.1`
+>
 > **Swift 2.3**  
 > `github "nodes-ios/KeyboardHelper" == 0.10.0`
 >
