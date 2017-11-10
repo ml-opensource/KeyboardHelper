@@ -55,12 +55,12 @@ public class KeyboardHelper {
         delegate = nil
     }
     
-    dynamic private func keyboardWillAppear(_ note: Notification) {
+    @objc dynamic private func keyboardWillAppear(_ note: Notification) {
         let info = KeyboardAppearanceInfo(notification: note)
         self.delegate?.keyboardWillAppear(info)
     }
     
-    dynamic private func keyboardWillDisappear(_ note: Notification) {
+    @objc dynamic private func keyboardWillDisappear(_ note: Notification) {
         let info = KeyboardAppearanceInfo(notification: note)
         self.delegate?.keyboardWillDisappear(info)
     }
