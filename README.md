@@ -40,7 +40,7 @@ pod 'KeyboardHelper', '~> 1.0'
 Implement `KeyboardHelperDelegate` in your UIViewController.
 
 ```swift
-class ViewController: UIViewController, KeyboardNotificationDelegate
+class ViewController: UIViewController, KeyboardHelperDelegate
 ```
 
 Add a `KeyboardHelper` private variable, initialize it and set the delegate.
