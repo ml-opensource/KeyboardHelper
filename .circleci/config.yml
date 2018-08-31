@@ -14,7 +14,7 @@ jobs:
       - checkout
 
       # Install CocoaPods
-      - run:
+      # - run:
           # name: Install CocoaPods
           # command: pod install
 
