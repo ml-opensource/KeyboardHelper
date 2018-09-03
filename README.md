@@ -4,7 +4,7 @@
 A small (but cool) tool for handling UIKeyboard appearing and disappearing in your view controllers.
 
 [![Travis](https://img.shields.io/travis/nodes-ios/KeyboardHelper.svg)](https://travis-ci.org/nodes-ios/KeyboardHelper)
-[![CircleCI](https://circleci.com/gh/nodes-ios/KeyboardHelper.svg?style=svg)](https://circleci.com/gh/nodes-ios/KeyboardHelper)
+[![CircleCI](https://circleci.com/gh/nodes-ios/KeyboardHelper.svg?style=shield)](https://circleci.com/gh/nodes-ios/KeyboardHelper)
 [![Codecov](https://img.shields.io/codecov/c/github/nodes-ios/KeyboardHelper.svg)](https://codecov.io/github/nodes-ios/KeyboardHelper)
 [![Documentation](https://img.shields.io/cocoapods/metrics/doc-percent/KeyboardHelper.svg)](http://cocoadocs.org/docsets/KeyboardHelper/)
 [![CocoaPods](https://img.shields.io/cocoapods/v/KeyboardHelper.svg)](https://cocoapods.org/pods/KeyboardHelper)
