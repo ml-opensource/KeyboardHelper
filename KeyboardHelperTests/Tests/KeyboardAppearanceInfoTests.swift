@@ -19,22 +19,22 @@ class KeyboardAppearanceInfoTests: XCTestCase {
 
         // Create test info
         var testUserInfo: [String: Any] = [
-            UIKeyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 100, y: 100, width: 100, height: 100)),
-            UIKeyboardFrameEndUserInfoKey: NSValue(cgRect: CGRect(x: 200, y: 200, width: 200, height: 200)),
-            UIKeyboardAnimationDurationUserInfoKey: 3.0,
-            UIKeyboardAnimationCurveUserInfoKey: NSNumber(integerLiteral: UIViewAnimationCurve.easeOut.rawValue),
+            UIResponder.keyboardFrameBeginUserInfoKey: NSValue(cgRect: CGRect(x: 100, y: 100, width: 100, height: 100)),
+            UIResponder.keyboardFrameEndUserInfoKey: NSValue(cgRect: CGRect(x: 200, y: 200, width: 200, height: 200)),
+            UIResponder.keyboardAnimationDurationUserInfoKey: 3.0,
+            UIResponder.keyboardAnimationCurveUserInfoKey: NSNumber(integerLiteral: UIView.AnimationCurve.easeOut.rawValue),
         ]
         
         if #available(iOS 9.0, *) {
-            testUserInfo[UIKeyboardIsLocalUserInfoKey] = false
+            testUserInfo[UIResponder.keyboardIsLocalUserInfoKey] = false
         } else {
             print("UIKeyboardIsLocalUserInfoKey is not available before iOS9.")
         }
     
         // Fake the notification
-        let note = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: testUserInfo)
+        let note = Notification(name: UIResponder.keyboardWillShowNotification, object: nil, userInfo: testUserInfo)
         appearanceInfo = KeyboardAppearanceInfo(notification: note)
-        let defaultNote = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo: nil)
+        let defaultNote = Notification(name: UIResponder.keyboardWillShowNotification, object: nil, userInfo: nil)
         defaultsAppearanceInfo = KeyboardAppearanceInfo(notification: defaultNote)
     }
     
@@ -69,9 +69,9 @@ class KeyboardAppearanceInfoTests: XCTestCase {
     }
     
     func testAnimationCurve() {
-        XCTAssertEqual(appearanceInfo.animationCurve, UIViewAnimationCurve.easeOut,
+        XCTAssertEqual(appearanceInfo.animationCurve, UIView.AnimationCurve.easeOut,
             "Parsing animationCurve from keyboard appearance info failed.")
-        XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIViewAnimationCurve.easeInOut,
+        XCTAssertEqual(defaultsAppearanceInfo.animationCurve, UIView.AnimationCurve.easeInOut,
             "Parsing default animationCurve from keyboard appearance info failed.")
     }
     

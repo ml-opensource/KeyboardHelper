@@ -57,19 +57,19 @@ class KeyboardHelperTests: XCTestCase {
 //        NSNotificationCenter.defaultCenter().postNotificationName(UIKeyboardWillShowNotification, object: kh)
         let notification : Notification
         if #available(iOS 9.0, *) {
-            notification = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: kh, userInfo:[
-                UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
-                UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
-                UIKeyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
-                UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258)),
-                UIKeyboardIsLocalUserInfoKey : NSNumber(value: true)
+            notification = Notification(name: UIResponder.keyboardWillShowNotification, object: kh, userInfo:[
+                UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
+                UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
+                UIResponder.keyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258)),
+                UIResponder.keyboardIsLocalUserInfoKey : NSNumber(value: true)
                 ])
         } else {
-            notification = Notification(name: NSNotification.Name.UIKeyboardWillShow, object: nil, userInfo:[
-                UIKeyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
-                UIKeyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
-                UIKeyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
-                UIKeyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258))
+            notification = Notification(name: UIResponder.keyboardWillShowNotification, object: nil, userInfo:[
+                UIResponder.keyboardAnimationCurveUserInfoKey : NSNumber(value: 7),
+                UIResponder.keyboardAnimationDurationUserInfoKey : NSNumber(value: 0.25),
+                UIResponder.keyboardFrameBeginUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 667, width: 375, height: 0)),
+                UIResponder.keyboardFrameEndUserInfoKey : NSValue(cgRect: CGRect(x: 0, y: 409, width: 375, height: 258))
                 ])
         }
         
@@ -87,7 +87,7 @@ class KeyboardHelperTests: XCTestCase {
                 return
             }
             XCTAssertNotNil(result)
-            XCTAssertEqual(result.animationCurve, UIViewAnimationCurve(rawValue: 7))
+            XCTAssertEqual(result.animationCurve, UIView.AnimationCurve(rawValue: 7))
             XCTAssertEqual(result.animationDuration, 0.25)
             XCTAssertEqual(result.beginFrame, CGRect(x: 0, y: 667, width: 375, height: 0))
             XCTAssertEqual(result.endFrame, CGRect(x: 0, y: 409, width: 375, height: 258))
@@ -107,7 +107,7 @@ class KeyboardHelperTests: XCTestCase {
         let expectation = self.expectation(description: "KeyboardHelper calls the delegate as the result of receiving the hide notification")
         spyDelegate.expectation = expectation
         
-        NotificationCenter.default.post(name: NSNotification.Name.UIKeyboardWillHide, object: kh)
+        NotificationCenter.default.post(name: UIResponder.keyboardWillHideNotification, object: kh)
         
         
         waitForExpectations(timeout: 1) { error in

@@ -22,13 +22,13 @@ public struct KeyboardAppearanceInfo {
     
     /// Getter for the UIKeyboard frame begin infokey. Returns a `CGRect` or `CGRectZero`.
     public var beginFrame: CGRect {
-        return (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
+        return (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     
     /// Getter for the UIKeyboard frame end infokey. Return a `CGRect` or `CGRectZero`.
     public var endFrame: CGRect {
-        return (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
+        return (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
     }
     
     
@@ -37,7 +37,7 @@ public struct KeyboardAppearanceInfo {
     /// That variable will help to keep track of which app uses the keyboard at the moment.
     /// If it is the current app it is true, if not it is false.
     public var belongsToCurrentApp: Bool {
-        return (userInfo[UIKeyboardIsLocalUserInfoKey] as? Bool) ?? true
+        return (userInfo[UIResponder.keyboardIsLocalUserInfoKey] as? Bool) ?? true
         
     }
     
@@ -45,21 +45,21 @@ public struct KeyboardAppearanceInfo {
     /// Getter for the duration of the keyboard appear/disappear animation.
     /// By default: `0.25`.
     public var animationDuration: Double {
-        return (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
+        return (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0.25
     }
 
     /// Getter for the animation curve.
     /// By default: `EaseInOut`.
-    public var animationCurve: UIViewAnimationCurve {
-        guard let value = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? Int else { return .easeInOut }
-        return UIViewAnimationCurve(rawValue: value) ?? .easeInOut
+    public var animationCurve: UIView.AnimationCurve {
+        guard let value = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? Int else { return .easeInOut }
+        return UIView.AnimationCurve(rawValue: value) ?? .easeInOut
     }
     
     
     /// Getter for the animation option.
     /// That variable will help to keep track of the keyboard appearence.
-    public var animationOptions: UIViewAnimationOptions {
-        return UIViewAnimationOptions(rawValue: UInt(animationCurve.rawValue << 16))
+    public var animationOptions: UIView.AnimationOptions {
+        return UIView.AnimationOptions(rawValue: UInt(animationCurve.rawValue << 16))
     }
     
     /// Animate a `UView` while the keyboard appears and check if animation is finished.
