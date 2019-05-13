@@ -16,25 +16,21 @@ A small (but cool) tool for handling UIKeyboard appearing and disappearing in yo
 
 ### Carthage
 ~~~bash
-github "nodes-ios/KeyboardHelper" ~> 1.0
+github "nodes-ios/KeyboardHelper" ~> 3.0.0
 ~~~
-
-> Last versions compatible with lower Swift versions:  
->
-> **Swift 3**  
-> `github "nodes-ios/KeyboardHelper" == 1.2.1`
->
-> **Swift 2.3**  
-> `github "nodes-ios/KeyboardHelper" == 0.10.0`
->
-> **Swift 2.2**  
-> `github "nodes-ios/KeyboardHelper" == 0.9.4`
 
 ### CocoaPods
 ~~~
-pod 'KeyboardHelper', '~> 1.0'
+pod 'KeyboardHelper', '~> 3.0.0'
 ~~~ 
 
+> ### Older versions
+> Last versions compatible with lower Swift versions:  
+>
+> **Swift 4**: `~> 2.0.0`  
+> **Swift 3**: `== 1.2.1`  
+> **Swift 2.3**: `== 0.10.0`  
+> **Swift 2.2**: `== 0.9.4`
 
 ## 🔧 Setup
 Implement `KeyboardHelperDelegate` in your UIViewController.
