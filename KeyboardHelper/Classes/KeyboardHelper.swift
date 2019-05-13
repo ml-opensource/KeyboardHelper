@@ -45,8 +45,8 @@ public class KeyboardHelper {
     required public init(delegate: KeyboardHelperDelegate) {
         self.delegate = delegate
         
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillAppear(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardHelper.keyboardWillDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     
