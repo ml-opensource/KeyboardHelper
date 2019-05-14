@@ -71,7 +71,7 @@ func keyboardWillAppear(_ info: KeyboardAppearanceInfo) {
                 self.scrollView.contentInset = insets
                 self.scrollView.scrollIndicatorInsets = insets
             },
-            completion:nil)
+            completion: nil)
     }
     
 func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
@@ -83,7 +83,7 @@ func keyboardWillDisappear(_ info: KeyboardAppearanceInfo) {
             self.scrollView.contentInset = insets
             self.scrollView.scrollIndicatorInsets = insets
         },
-        completion:nil)
+        completion: nil)
 }
 ```
 
