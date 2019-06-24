@@ -1,1 +1,1 @@
-/Keyboardhelper/Classes/KeyboardAppearanceInfo.swift
+../../Keyboardhelper/Classes/KeyboardAppearanceInfo.swift
